@@ -112,15 +112,38 @@ geração de colunas via XPress.
 Muito provavelmente devido à escolha inicial de colunas, muitos testes
 apresentaram resultados muito altos ou ainda como se pode ver em
 algumas situações, não foi encontrada soluções inteiras para o
-problema e portanto o limitante primal é $\infty$. No diretório Testes do trabalho, além da saída completa,
-poder-se-á ver a evolução das iterações e o resultado final.
+problema e portanto o limitante primal é $\infty$. No diretório Testes
+do trabalho, além da saída completa, poder-se-á ver a evolução das
+iterações e o resultado final.
 
-Comparando resultados de solução optima entre T1 e T2 encontramos
-resultados muitas vezes idênticos. Contudo, T1 não nos dá a garantia de
-uma solução ótima. Infelizmente não conseguimos fazer testes mais
-aprofundados com T2 para comparar os resultados.
+Comparando resultados de solução ótima entre resolver utilizando PLI
+(T1) e resolver usando o algoritmo de Wagner e Whithin (T2)
+encontramos resultados muitas vezes idênticos. Contudo, T1 não nos dá
+a garantia de uma solução ótima já que embora estejamos resolvendo de
+forma exata com o Xpress este pode parar antes de encontrar a solução
+ótima, por exemplo, depois de atingir o tempo máximo de execução (ou
+número de iterações). Para as instâncias testadas, o ótimo sempre foi
+encontrado.
 
-Na tabela \ref{tb:lpld} apesentamos os melhores limitantes duais e
+Com relação ao tempo computacional a vantagem do algoritmo de W\&W
+sobre a solução com PLI é visível, na tabela \ref{tb:tempo} mostramos
+os tempos de execução para duas instâncias para cada um dos métodos.
+
+\begin{table}
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Instância & W\&W & PLI \\
+    \hline
+    test0356.0 & 3s & 42s\\
+    test0333.0 & 0s & 19s\\
+    \hline
+  \end{tabular}
+  \caption{Tempos de execução para as rotinas de pricing}
+  \label{tb:tempo}
+\end{table}
+
+Na tabela \ref{tb:lpld} apresentamos os melhores limitantes duais e
 primais encontrados em cada instância. As instâncias sublinhadas
 correspondem aos casos em que o algoritmo conseguiu encontrar (e
 compravar) a solução ótima, isto é, casos em que o limitante dual é
