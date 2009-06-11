@@ -103,25 +103,30 @@ para resolvê-lo, que é o caso. O algoritmo de Wagner e Within foi
 implementado em $O(n^2)$.
 
 Preocupamo-nos em escrever um código que fosse reutilizável, isto é,
-dado um novo par ``problema mestre''-``problema restrito'', basta
+dado um novo par ``problema mestre''-``problema pricing'', basta
 implementar duas classes em C++ segundo certa interface padrão, e
 poderemos utilizar nosso código sem outras alterações para fazer a
 geração de colunas via XPress.
 
 \section{Análise de resultados}
 Muito provavelmente devido à escolha inicial de colunas, muitos testes
-apresentaram resultados muito altos. No diretório Testes do trabalho,
-além da saída completa, poder-se-á ver a evolução das iterações e o
-resultado final. 
+apresentaram resultados muito altos ou ainda como se pode ver em
+algumas situações, não foi encontrada soluções inteiras para o
+problema e portanto o limitante primal é $\infty$. No diretório Testes do trabalho, além da saída completa,
+poder-se-á ver a evolução das iterações e o resultado final.
 
 Comparando resultados de solução optima entre T1 e T2 encontramos
 resultados muitas vezes idênticos. Contudo, T1 não nos dá a garantia de
 uma solução ótima. Infelizmente não conseguimos fazer testes mais
 aprofundados com T2 para comparar os resultados.
 
-\section{Limitantes Duais e Primais}
+Na tabela \ref{tb:lpld} apesentamos os melhores limitantes duais e
+primais encontrados em cada instância. As instâncias sublinhadas
+correspondem aos casos em que o algoritmo conseguiu encontrar (e
+compravar) a solução ótima, isto é, casos em que o limitante dual é
+igual ao primal.
 
-\begin{table}
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c||c|c|c|}
 \hline
@@ -141,7 +146,7 @@ test0124.3 & 2371344.766 & 463382663 & test0355.3 & 1569293.198 & 286818785 \\
 \underline{test0331.3} & 581191.000 & 581191 & \underline{test0356.3} & 6415886.000 & 6415886 \\
 test0332.0 & 74411.775 & 17164456 & test0357.0 & 901376.500 & 903977 \\
 test0332.3 & 558901.001 & 157261626 & \underline{test0357.3} & 5214907.000 & 5214907 \\
-test0333.0 & 86497.000 & 86496 & \underline{test0358.0} & 973344.000 & 973344 \\
+\underline{test0333.0} & 86497.000 & 86497 & \underline{test0358.0} & 973344.000 & 973344 \\
 test0333.3 & 698397.554 & 698536 & test0358.3 & 5632095.000 & 5632094 \\
 test0334.0 & 83467.000 & 19549042 & \underline{test0359.0} & 1127352.000 & 1127352 \\
 \underline{test0334.3} & 677190.000 & 677190 & test0359.3 & 6438016.000 & 6439752 \\
